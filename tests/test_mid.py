@@ -1,4 +1,4 @@
-"""Tests for mid moduel
+"""TestsMidModuel
     """
 
 import pytest

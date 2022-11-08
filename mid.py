@@ -1,4 +1,4 @@
-"""Mid Moduel"""
+"""MidModuel"""
 
 
 def mid(string: str) -> str:
