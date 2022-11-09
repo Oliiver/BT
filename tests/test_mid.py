@@ -2,7 +2,7 @@
     """
 
 import pytest
-from mid import mid
+from app.internal.mid import mid
 
 
 @pytest.mark.parametrize("test_input,expected", [("odd", "d"), ("i", "i"), ("C++", "+")])
