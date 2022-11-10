@@ -1,7 +1,7 @@
 """ConverModuel"""
 
 
-def convert(list: list[int] | list[float]) -> list[str]:
+def convert(list: list[float] | list[int]) -> list[str]:
     """takes in a list of numbers and returns a list of strings of each number
 
     Args:
