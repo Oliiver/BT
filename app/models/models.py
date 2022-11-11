@@ -1,5 +1,7 @@
 """
 app.models.py
+-------------
+Defines the propper JSON to be sent and received from the API
 """
 import typing
 from pydantic import BaseModel, ValidationError, validator
