@@ -2,7 +2,7 @@
 
 
 def format_number(number: int) -> str:
-    """Returns a
+    """Returns a formatted number as a string
 
     Side note: to do it this way: return "{:,}".format(number) 
     felt like cheating.
