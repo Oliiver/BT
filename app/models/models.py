@@ -2,7 +2,7 @@
 app.models.py
 """
 import typing
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError, validator
 
 
 class ConvertRequest(BaseModel):
@@ -28,6 +28,12 @@ class MidResponse(BaseModel):
 class FormatNumberRequest(BaseModel):
     """Response for format_number request"""
     number: int
+
+    @validator('number')
+    def cannot_be_negative(cls, v):
+        if v < 0:
+            raise ValueError('Cannot be negativ')
+        return v
 
 
 class FormatNumberResponse(BaseModel):

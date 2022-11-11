@@ -1,7 +1,7 @@
 """OnlyIntsModuel"""
 
 
-def only_ints(num1: float | int, num2: float | int) -> bool:
+def only_ints(num1: int | float, num2: int | float) -> bool:
     """Takes in two numbers. If they are both integers 
     return true else false.
 

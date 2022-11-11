@@ -8,3 +8,9 @@ from app.internal.format_number import format_number
 def test_numbers(test_input, expected):
     """Test different lengths of numbers"""
     assert format_number(test_input) == expected
+
+
+def test_int():
+    """Test Exception raised for wrong type."""
+    with pytest.raises(Exception):
+        format_number(-1234)

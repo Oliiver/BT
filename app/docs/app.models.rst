@@ -1,13 +1,13 @@
-tests package
-=============
+app.models package
+==================
 
 Submodules
 ----------
 
-tests.test\_mid module
-----------------------
+app.models.models module
+------------------------
 
-.. automodule:: tests.test_mid
+.. automodule:: app.models.models
    :members:
    :undoc-members:
    :show-inheritance:
@@ -15,7 +15,7 @@ tests.test\_mid module
 Module contents
 ---------------
 
-.. automodule:: tests
+.. automodule:: app.models
    :members:
    :undoc-members:
    :show-inheritance:
