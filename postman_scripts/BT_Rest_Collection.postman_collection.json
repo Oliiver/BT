@@ -1,0 +1,1053 @@
+{
+	"info": {
+		"_postman_id": "5feda625-7e72-445c-8698-553ccd6a4f67",
+		"name": "BT_Rest_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12249816"
+	},
+	"item": [
+		{
+			"name": "convert_valid_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"str_list\": [\r",
+							"        \"0\",\r",
+							"        \"0\"\r",
+							"    ]\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"num_list\": [\r\n    0,\r\n    0\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/convert",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"convert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "convert_empty_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"str_list\": []\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"num_list\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/convert",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"convert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "convert_number_strings_pydantic_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"str_list\": [\r",
+							"        \"1\",\r",
+							"        \"1.2\",\r",
+							"        \"400.023457483\"\r",
+							"    ]\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"num_list\": [\"1\",\"1.2\",\"400.023457483\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/convert",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"convert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "convert_malformed_JSON_error_422",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 422\", function () {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"list\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/convert",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"convert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "conver_invalid_types_error_422",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 422\", function () {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"num_list\": [\"string\",\"2\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/convert",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"convert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "format_valid_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"formatted_number\": \"123.456.789\"\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"number\": 123456789\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/format",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"format"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "format_cut_decimal_pydantic_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"formatted_number\": \"123.456.789\"\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"number\": 123456789.234\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/format",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"format"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "format_empty_error_422",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"number\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/format",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"format"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "format_negativ_number_error_422",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"number\": -123\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/format",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"format"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mid_valid_even_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"letter\": \"\"\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"string\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/mid",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"mid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mid_valid_odd_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"letter\": \"i\"\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"string\": \"stringy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/mid",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"mid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mid_valid_pydantic_convert_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"letter\": \"3\"\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"string\": 12345\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/mid",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"mid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mid_malformed_JSON_error_422",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 422\", function () {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  [\"string\": \"12345\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/mid",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"mid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "only_ints_valid_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"truth_value\": true\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:80/only_ints?num1=1&num2=2",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"only_ints"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "1"
+						},
+						{
+							"key": "num2",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "only_floats_false_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"truth_value\": false\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "num1",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "num2",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:80/only_ints?num1=1.0&num2=2",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"only_ints"
+					],
+					"query": [
+						{
+							"key": "num1",
+							"value": "1.0"
+						},
+						{
+							"key": "num2",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zap_valid_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"combined_list\": [\r",
+							"        [\r",
+							"            \"string\",\r",
+							"            \"string\"\r",
+							"        ],\r",
+							"        [\r",
+							"            1,\r",
+							"            \"string2\"\r",
+							"        ],\r",
+							"        [\r",
+							"            2,\r",
+							"            \"string3\"\r",
+							"        ]\r",
+							"    ]\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"list1\": [\r\n    \"string\",\r\n    1,\r\n    2\r\n  ],\r\n  \"list2\": [\r\n    \"string\",\r\n    \"string2\",\r\n    \"string3\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/zap",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"zap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zap_first_list_longer_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"combined_list\": [\r",
+							"        [\r",
+							"            \"string\",\r",
+							"            \"string\"\r",
+							"        ],\r",
+							"        [\r",
+							"            1,\r",
+							"            \"string2\"\r",
+							"        ],\r",
+							"        [\r",
+							"            2,\r",
+							"            \"string3\"\r",
+							"        ]\r",
+							"    ]\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"list1\": [\r\n    \"string\",\r\n    1,\r\n    2,\r\n    \"kadj\",\r\n    3,\r\n    4\r\n  ],\r\n  \"list2\": [\r\n    \"string\",\r\n    \"string2\",\r\n    \"string3\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/zap",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"zap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zap_second_list_longer_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"combined_list\": [\r",
+							"        [\r",
+							"            \"string\",\r",
+							"            \"string\"\r",
+							"        ],\r",
+							"        [\r",
+							"            1,\r",
+							"            \"string2\"\r",
+							"        ],\r",
+							"        [\r",
+							"            2,\r",
+							"            \"string3\"\r",
+							"        ]\r",
+							"    ]\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"list1\": [\r\n    \"string\",\r\n    1,\r\n    2\r\n  ],\r\n  \"list2\": [\r\n    \"string\",\r\n    \"string2\",\r\n    \"string3\",\r\n    \"string4\",\r\n    \"string5\"\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/zap",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"zap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zap_both_empty_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"combined_list\": []\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"list1\": [],\r\n  \"list2\": [\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/zap",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"zap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zap_first_empty_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"combined_list\": []\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"list1\": [],\r\n  \"list2\": [1,2,3,4\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/zap",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"zap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zap_second_empty_OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body({\r",
+							"    \"combined_list\": []\r",
+							"});});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"list1\": [1,2,3,4,5],\r\n  \"list2\": [\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/zap",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"zap"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "zap_malformed_JSON_error_422",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 422\", function () {\r",
+							"    pm.response.to.have.status(422);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"list1\": [],\r\n  \"list2\": 1,23,4}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:80/zap",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"zap"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
