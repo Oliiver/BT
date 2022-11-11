@@ -1,5 +1,4 @@
 """app.routers.v1.py"""
-import json
 from fastapi import APIRouter, status, HTTPException, Depends
 
 from app.internal.convert import convert
